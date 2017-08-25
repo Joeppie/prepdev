@@ -7,9 +7,9 @@ if [[ `id -u` == 0 ]]; then
     exit
 fi
 user="$(whoami)"
-sudo cd "/home/$user"
+cd "/home/$user"
 
-echo "installing clion and c++ compiler"
+sudo echo "installing clion and c++ compiler"
  
 sudo apt-get install g++
 #cannot put name of exact clion version into variable; notice how extracted folder is named differently (caps)
@@ -22,9 +22,8 @@ chmod -R 0755 .
 ls
 cd bin
 ls
-
-
-zenity --info --text="Register clion, (activation code from site is easiest) and after doing that, close it to avoid accidentally closing clion and its "
-read -p "Please Copy text above, then press enter to close and start clion installer"
 sh clion.sh &
+echo "this window will now close."
+zenity --info --text="You can register Clion using their website and a university email.\nYou may find the 'activation code' option the easiest to use."
+
 

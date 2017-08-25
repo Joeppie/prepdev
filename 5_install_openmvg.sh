@@ -6,7 +6,9 @@ if [[ `id -u` == 0 ]]; then
     exit
 fi
 user="$(whoami)"
-sudo cd "/home/$user"
+cd "/home/$user"
+
+Echo "installing OpenMVG and dependencies"
 
 cores=$(grep -c ^processor /proc/cpuinfo)
 

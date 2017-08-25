@@ -6,11 +6,10 @@ if [[ `id -u` == 0 ]]; then
     exit
 fi
 user="$(whoami)"
-sudo cd "/home/$user"
+cd "/home/$user"
+sudo echo "installing OpenCV, Opencv_contrib and dependencies"
 
 
-
-echo "Installing required packages"
 sleep 2
 # CMake
 sudo apt-get -y install cmake                               # google-glog + gflags

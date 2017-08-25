@@ -8,7 +8,8 @@ if [[ `id -u` == 0 ]]; then
     exit
 fi
 user="$(whoami)"
-sudo cd "/home/$user"
+cd "/home/$user"
+sudo echo "installing ceres and dependencies"
 
 cores=$(grep -c ^processor /proc/cpuinfo)
 

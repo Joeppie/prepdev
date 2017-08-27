@@ -1,10 +1,22 @@
 #!/bin/bash
+
+#this script installs opencv and opencv_contrib by cloning the master repositories off of Github.
+
+#simple function that echoes and uses notification for messages.
+function message() { 
+    echo $@ 
+    notify-send "$0" "$@" 
+}
+
+
+
 if [[ `id -u` == 0 ]]; then
     error="Do not run as root, otherwise the script cannot install opencv properly."
     zenity --info --text=$error
     echo $error
     exit
 fi
+
 user="$(whoami)"
 cd "/home/$user"
 sudo echo "installing OpenCV, Opencv_contrib and dependencies"
@@ -20,7 +32,7 @@ sudo apt-get -y install libsuitesparse-dev
 sudo apt-get -y install libprotobuf-dev                     #seemingly required ; linked by target "opencv_dnn_modern" in directory 
 sudo apt-get -y install libgtkglext1 libgtkglext1-dev       #for open gl support.
 sudo apt-get -y install libvtk5-dev                         #visualization tooklkit.
-sudo apt-get -y install libblas-dev liblapack-dev           # s(note that first one is NOT liblas, it's libblas.)
+sudo apt-get -y install libblas-dev liblapack-dev           #(note that first one is NOT liblas, it's libblas.)
 sudo apt-get -y install build-essential libgtk2.0-dev       #required for UI; opencv currently uses gtk2+
 sudo apt-get -y install libgdal-dev                         #gdal
 sudo apt-get -y install liblapack-dev                       #lapack
@@ -53,16 +65,9 @@ cmakeArguments="-D CMAKE_BUILD_TYPE=Release"\
 " -D WITH_GDAL=ON -D WITH_OPENMP=ON -D WITH_LAPACK=ON -D ENABLE_CXX11=ON"\
 " .. " #The location of the sources (one folder up from build)
 
-echo cmake $cmakeArguments
-read -p "press enter to continue and run cmake command as above...."
-
-cmake $cmakeArguments
-
-read -p "press enter to build openCV"
 cores=$(grep -c ^processor /proc/cpuinfo)
-make -j$cores
 
-sudo make install
+cmake $cmakeArguments && make -j$cores && sudo make install
 
 cd ~/opencv/build/doc/
 make -j$cores html_docs

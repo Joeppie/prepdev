@@ -8,8 +8,6 @@ fi
 user="$(whoami)"
 cd "/home/$user"
 
-Echo "installing OpenMVG and dependencies"
-
 cores=$(grep -c ^processor /proc/cpuinfo)
 
 message="Downloading git repo for openMVG."
@@ -30,6 +28,7 @@ mkdir openMVG_Build
 ls
 cd openMVG_Build/
 ls
+mkdir openMVG_install
 message="Installing cmake and performing build."
 echo $message
 notify-send "Open MVG Installation" "$message"
@@ -38,7 +37,7 @@ sudo apt -y install cmake
 
 #warning: the installation path must be identical to openMVG_build, 
 #otherwise the cmake find script fails, looking for the include folder directly under openMVG/Build.
-cmakearguments="cmake -D CMAKE_INSTALL_PREFIX:STRING=/home/$user/openMVG_Build/"\
+cmakearguments="cmake -D CMAKE_INSTALL_PREFIX:STRING=/home/$user/openMVG_Build/openMVG_install"\
 " -DCMAKE_BUILD_TYPE=RELEASE"\
 " -DOpenMVG_BUILD_TESTS=ON"\
 " -D OpenMVG_BUILD_EXAMPLES=ON . ../openMVG/src/"

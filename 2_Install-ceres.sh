@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#simple function that echoes and uses notification for messages.
+function message() { 
+    echo $@ 
+    notify-send "$0" "$@" 
+}
+
+
 
 if [[ `id -u` == 0 ]]; then
     error="Do not run as root, otherwise the script cannot install opencv properly."
@@ -9,8 +16,9 @@ if [[ `id -u` == 0 ]]; then
 fi
 user="$(whoami)"
 cd "/home/$user"
-sudo echo "installing ceres and dependencies"
+message "installing ceres and dependencies"
 
+#determine amount of cores ideal for building.
 cores=$(grep -c ^processor /proc/cpuinfo)
 
 git clone --recursive https://ceres-solver.googlesource.com/ceres-solver
@@ -34,13 +42,11 @@ sudo apt-get -y install libsuitesparse-dev
 
 mkdir ceres-bin
 cd ceres-bin
-cmake ../ceres-solver #pathname corresponds to cloned repository.
-make -j$cores #number of cores to build on;ideal performance is equal to number of logical cores; this script automatically sets that
-make test
-# Optionally install Ceres, it can also be exported using CMake which
-# allows Ceres to be used without requiring installation, see the documentation
-# for the EXPORT_BUILD_DIR option for more information.
-sudo make install
+
+#string together the set of dependent commands; && only lets them execute if the previous one was succesful
+cmake ../ceres-solver && make -j$cores && sudo make install && message "Succesfully installed ceres. The unittests will now run, but you can run the other scripts"
+
+make test 
 
 
 

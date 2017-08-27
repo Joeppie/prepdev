@@ -24,6 +24,13 @@ Continue with:
     ./5_install_openmvg.sh
 This install Ceres, OpenCV, OpenCV_contrib, and openMVG and the respective requirements of each of these.
 
+note: openMVG is installed into /home/joep/openMVG_Build/openMVG_install as per the instructions of the openMVG build.md instructions.
+
+## After running the scripts
+
+WIP: SET(OpenMVG_DIR "/home/joep/openMVG_Build/openMVG_install/share/openMVG/cmake") needs to be set before using find_package in the cmake that uses openMVG as a dependency.
+However, to do that, the username needs to be dynamically inserted into the cmake file. Some other things are necessary there too.
+
 ## disclaimer
 It could be that I accidentally messed the order of things to install, and that you may need to e.g. install clion before ceres.
 If so, please let me know and I will try to fix it.

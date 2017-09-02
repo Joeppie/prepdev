@@ -13,7 +13,7 @@ Go to any directory (e.g. home) and use
 
 If you are using a VMware machine start with 
 
-    ./1_prepare.sh
+    ./1_InstallOpenVMTools.sh
 This updates the apt-repository and install the latest vmware guest tools for smoother development.
     
 Continue with:
@@ -28,10 +28,11 @@ note: openMVG is installed into /home/joep/openMVG_Build/openMVG_install as per 
 
 ## After running the scripts
 
-WIP: SET(OpenMVG_DIR "/home/joep/openMVG_Build/openMVG_install/share/openMVG/cmake") needs to be set before using find_package in the cmake that uses openMVG as a dependency.
-However, to do that, the username needs to be dynamically inserted into the cmake file. Some other things are necessary there too.
+You can refer to the [Example CMakeLists.txt](https://github.com/Joeppie/prepdev/blob/master/Example_CMakeLists.txt) file for an example of how to create a project. (The example also includes gdal,which can be easily removed, if desired.)
 
 ## disclaimer
 It could be that I accidentally messed the order of things to install, and that you may need to e.g. install clion before ceres.
 If so, please let me know and I will try to fix it.
+
+
 

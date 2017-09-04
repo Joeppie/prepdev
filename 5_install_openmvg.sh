@@ -10,12 +10,17 @@ cd "/home/$user"
 
 cores=$(grep -c ^processor /proc/cpuinfo)
 
-message="Downloading git repo for openMVG."
-echo $message
-notify-send "Open MVG Installation" "$message"
 
-git clone --recursive https://github.com/openMVG/openMVG.git
+if [ $1 = "noclone" ]; then
+    echo "noclone specified, not cloning git directory to openMVG directory in home, assuming it is there already"
+else
+    message="Downloading git repo for openMVG."
+    echo $message
+    notify-send "Open MVG Installation" "$message"
+    git clone --recursive https://github.com/openMVG/openMVG.git
+fi
 
+    
 message="installing openMVG dependencies, enter sudo password if necessary."
 echo $message
 notify-send "Open MVG Installation" "$message"

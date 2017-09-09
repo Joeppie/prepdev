@@ -24,7 +24,7 @@ Continue with:
     ./5_install_openmvg.sh
 This install Ceres, OpenCV, OpenCV_contrib, and openMVG and the respective requirements of each of these.
 
-note: openMVG is installed into /home/joep/openMVG_Build/openMVG_install as per the instructions of the openMVG build.md instructions.
+note: openMVG is installed into /home/username/openMVG_Build/openMVG_install as per the instructions of the openMVG build.md instructions.
 
 ## After running the scripts
 

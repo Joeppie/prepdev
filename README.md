@@ -10,6 +10,7 @@ Go to any directory (e.g. home) and use
 
     git clone https://github.com/Joeppie/prepdev
     cd prepdev
+(You may need to perform sudo apt-get install git)
 
 If you are using a VMware machine start with 
 
@@ -28,11 +29,10 @@ note: openMVG is installed into /home/username/openMVG_Build/openMVG_install as 
 
 ## After running the scripts
 
-You can refer to the [Example CMakeLists.txt](https://github.com/Joeppie/prepdev/blob/master/Example_CMakeLists.txt) file for an example of how to create a project. (The example also includes gdal,which can be easily removed, if desired.)
+You can refer to the [Example CMakeLists.txt](https://github.com/Joeppie/prepdev/blob/master/Example_CMakeLists.txt) file for an example of how to create a project using OpenMVG and gdal.
 
 ## disclaimer
-It could be that I accidentally messed the order of things to install, and that you may need to e.g. install clion before ceres.
-If so, please let me know and I will try to fix it.
+It could be something's not quite right with the scripts/prerequisites and that they don't work out. If so, please let me know  and/or send a pull request.
 
 
 

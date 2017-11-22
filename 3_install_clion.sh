@@ -18,10 +18,10 @@ function message() {
 message "Downloading clion and instlling g++ if not installed."
 sudo apt-get install g++
 #cannot put name of exact clion version into variable; notice how extracted folder is named differently (caps)
-wget https://download-cf.jetbrains.com/cpp/CLion-2017.2.1.tar.gz
-tar zfx CLion-2017.2.1.tar.gz
-rm CLion-2017.2.1.tar.gz
-cd clion-2017.2.1/
+wget https://download-cf.jetbrains.com/cpp/CLion-2017.2.3.tar.gz
+tar zfx CLion-2017.2.3.tar.gz
+rm CLion-2017.2.3.tar.gz
+cd clion-2017.2.3/
 chmod -R 0755 .
 cd bin
 message "clion has been installed, please configure it"

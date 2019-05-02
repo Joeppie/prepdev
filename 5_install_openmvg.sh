@@ -17,7 +17,7 @@ else
     message="Downloading git repo for openMVG."
     echo $message
     notify-send "Open MVG Installation" "$message"
-    git clone --recursive https://github.com/openMVG/openMVG.git
+    git clone --recursive https://github.com/Joeppie/openMVG.git
 fi
 
     

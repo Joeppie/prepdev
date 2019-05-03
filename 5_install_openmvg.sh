@@ -43,7 +43,7 @@ sudo apt -y install cmake
 #warning: the installation path must be identical to openMVG_build, 
 #otherwise the cmake find script fails, looking for the include folder directly under openMVG/Build.
 cmakearguments="cmake -D CMAKE_INSTALL_PREFIX:STRING=/home/$user/openMVG_Build/openMVG_install"\
-" -DCMAKE_BUILD_TYPE=RELEASE"\
+" -DCMAKE_BUILD_TYPE=DEBUG"\
 " -DOpenMVG_BUILD_TESTS=ON"\
 " -D OpenMVG_BUILD_EXAMPLES=ON . ../openMVG/src/"
 
